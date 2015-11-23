@@ -1,0 +1,124 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.miage</groupId>
+  <artifactId>tp-synchro-rest-festival</artifactId>
+  <version>0.0.1</version>
+  <name>My Festival Simulation</name>
+  <description>My Festival Simulation</description>
+
+  <repositories>
+	  <repository>
+	       <id>maven-restlet</id>
+	       <name>Public online Restlet repository</name>
+	       <url>http://maven.restlet.org</url>
+	   </repository>
+  </repositories>
+
+  <build>
+  	<plugins>
+    	<plugin>
+        	<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-jar-plugin</artifactId>
+        	<version>2.3.1</version>
+        	<configuration>
+            <archive>
+                <manifest>
+                  <mainClass>festival.simulation.Main</mainClass>
+                </manifest>
+            </archive>
+        </configuration>
+    </plugin>
+
+    <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>1.4</version>
+          <executions>
+              <execution>
+                  <phase>package</phase>
+                  <goals>
+                      <goal>shade</goal>
+                  </goals>
+              </execution>
+          </executions>
+          <configuration>
+              <finalName>uber-${project.artifactId}-${project.version}</finalName>
+              <filters>
+      				<filter>
+          				<artifact>*:*</artifact>
+          				<excludes>
+               				<exclude>META-INF/*.SF</exclude>
+              				<exclude>META-INF/*.DSA</exclude>
+              				<exclude>META-INF/*.RSA</exclude>
+          				</excludes>
+      				</filter>
+			  </filters>
+          </configuration>
+      </plugin>
+
+	  <plugin>
+	      <groupId>org.apache.maven.plugins</groupId>
+	      <artifactId>maven-compiler-plugin</artifactId>
+	      <version>2.0.2</version>
+	      <configuration>
+	       <source>1.8</source>
+	       <target>1.8</target>
+	      </configuration>
+	  </plugin>
+
+	  <plugin>
+	      <groupId>org.apache.maven.plugins</groupId>
+	      <artifactId>maven-source-plugin</artifactId>
+	      <version>2.1.2</version>
+	      <executions>
+	          <execution>
+	              <id>attach-sources</id>
+	              <goals>
+	                  <goal>jar</goal>
+	              </goals>
+	          </execution>
+	      </executions>
+	  </plugin>
+
+    <!--
+	  <plugin>
+	      <groupId>org.apache.maven.plugins</groupId>
+	      <artifactId>maven-javadoc-plugin</artifactId>
+	      <version>2.8</version>
+	      <executions>
+	          <execution>
+	              <id>attach-javadocs</id>
+	              <goals>
+	                  <goal>jar</goal>
+	              </goals>
+	          </execution>
+	      </executions>
+    </plugin>
+    -->
+  </plugins>
+
+</build>
+
+	<dependencies>
+	    <dependency>
+	        <groupId>org.restlet.jse</groupId>
+	        <artifactId>org.restlet</artifactId>
+	        <version>2.1.1</version>
+	    </dependency>
+
+		<dependency>
+		    <groupId>org.restlet.jse</groupId>
+		    <artifactId>org.restlet.ext.json</artifactId>
+		    <version>2.1.1</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.restlet.jse</groupId>
+		    <artifactId>org.restlet.ext.xml</artifactId>
+		    <version>2.1.1</version>
+		</dependency>
+
+	</dependencies>
+
+
+</project>
