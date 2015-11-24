@@ -16,12 +16,11 @@ public class Simulation {
 	    this.maBilleterie = new Billeterie();
     }
 
-	public void addPeople(int people) {
+	public void addPeople(int people) {		
         for (int i = 0; i < people; i++) {
         	Festivalier festivalier = new Festivalier(i, maBilleterie, siteDepart);
 			this.mesFestivaliers.add(festivalier);
 			festivalier.start();
-			System.out.println("Le festivalier " + festivalier.numFestivalier + " est parti.");
 		}
     }
 
@@ -31,7 +30,6 @@ public class Simulation {
 			this.mesBus.add(bus);
 			this.siteDepart.buses.add(bus);
 			bus.start();
-			System.out.println("Le bus " + bus.idBus + " est parti.");
 		}
     }
 }

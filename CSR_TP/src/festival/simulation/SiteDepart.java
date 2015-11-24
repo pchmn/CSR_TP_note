@@ -13,10 +13,26 @@ public class SiteDepart {
 	
 	public synchronized void monterBus(Festivalier f){
 		
+		int i = 0;
 		for (Bus unBus : buses) {
-			if (!unBus.isOnTheRoadAgain && unBus.placesDispo <= unBus.placesMaxi){
+			i++;
+			if (!unBus.isOnTheRoadAgain && unBus.placesDispo <= unBus.placesMaxi && unBus.placesDispo > 0){
+				try {
+					unBus.prendrePassager();
+				} catch (Exception e) {
+				}
+				
 				f.setMonBus(unBus);
+				return;
 			}
-		} 
+			
+			if (buses.size() <= i){
+				try{
+					wait();
+				} catch (Exception e){
+					
+				}
+			}
+		}
 	}
 }

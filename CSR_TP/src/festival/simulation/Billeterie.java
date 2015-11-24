@@ -27,8 +27,6 @@ public class Billeterie {
 		this.currentStock--;
 
 		notifyAll();
-
-		System.out.println("Vendre : " + Thread.currentThread().getName() +": il reste " + this.currentStock + " places disponibles");
 	}
 
 }
