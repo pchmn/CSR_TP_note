@@ -21,7 +21,9 @@ public class Festivalier extends Thread {
 	
 	public void setMonBus(Bus bus){
 		this.monBus = bus;
-		System.out.println("Le festivalier " + this.numFestivalier + " a pris le bus " + this.monBus.idBus);
+		if(bus != null) {
+			System.out.println("Le festivalier " + this.numFestivalier + " a pris le bus " + this.monBus.idBus);	
+		}
 	}
 
 	// Le festivalier achete un ticket
@@ -73,7 +75,5 @@ public class Festivalier extends Thread {
 		}
 
 		prendreBus();
-		
-		sortirBus();
 	}
 }
