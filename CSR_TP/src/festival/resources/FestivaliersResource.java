@@ -16,9 +16,8 @@ import festival.backend.Backend;
 import festival.internals.Billeterie;
 import festival.internals.Festivalier;
 import festival.internals.SiteDepart;
-import festival.internals.User;
 
-public class PeopleResource extends ServerResource{
+public class FestivaliersResource extends ServerResource{
 
 	/** Backend. */
 	private Backend backend_;
@@ -27,13 +26,13 @@ public class PeopleResource extends ServerResource{
 	 * Constructor.
 	 * Call for every single people request.
 	 */
-	public PeopleResource()
+	public FestivaliersResource()
 	{
 		super();
 		backend_ = (Backend) getApplication().getContext().getAttributes()
 				.get("backend");
 	}
-
+	
 	/**
 	 * Returns the list of all the users
 	 *
@@ -50,7 +49,7 @@ public class PeopleResource extends ServerResource{
 		{
 			JSONObject current = new JSONObject();
 			current.put("id", festivalier.getNumFestivalier());
-			current.put("url", getReference().toString() + festivalier.getNumFestivalier());
+			current.put("url", getReference().toString() + "/" + festivalier.getNumFestivalier());
 			jsonFestivaliers.add(current);
 
 		}
@@ -59,7 +58,7 @@ public class PeopleResource extends ServerResource{
 		result.setIndenting(true);
 		return result;
 	}
-
+	
 	/**
 	 * Create a user with the data present in the json representation
 	 * 
@@ -94,5 +93,4 @@ public class PeopleResource extends ServerResource{
 		JsonRepresentation result = new JsonRepresentation(jsonArray);
 		return result;
 	}
-
 }

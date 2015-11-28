@@ -22,4 +22,6 @@ public interface Database
 
 	Festivalier createPeople(Billeterie billeterie, SiteDepart siteDepart) throws InterruptedException;
 
+	Festivalier getFestivalier(int userId);
+
 }

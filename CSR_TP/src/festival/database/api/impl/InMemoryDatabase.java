@@ -2,6 +2,7 @@ package festival.database.api.impl;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -41,6 +42,7 @@ public class InMemoryDatabase implements Database
     	Festivalier festivalier = new Festivalier(billeterie, siteDepart);
         festivalier.setNumFestivalier(festivalierCount_);
         festivaliers_.put(festivalierCount_, festivalier);
+        festivalier.start();
         Thread.sleep(100);
         festivalierCount_ ++;
         return festivalier;
@@ -49,5 +51,9 @@ public class InMemoryDatabase implements Database
 	@Override
 	public Collection<Festivalier> getFestivaliers() {
 		return festivaliers_.values();
+	}
+	
+	public Festivalier getFestivalier(int id){
+		return festivaliers_.get(id);
 	}
 }

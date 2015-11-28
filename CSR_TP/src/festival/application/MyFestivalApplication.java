@@ -14,7 +14,8 @@ import org.restlet.routing.Router;
 
 import festival.resources.RootResource;
 import festival.resources.BusesResource;
-import festival.resources.PeopleResource;
+import festival.resources.FestivalierResource;
+import festival.resources.FestivaliersResource;
 import festival.resources.UserResource;
 import festival.resources.UsersResource;
 
@@ -44,10 +45,10 @@ public class MyFestivalApplication extends Application
         Router router = new Router(getContext());
         router.attach("/", RootResource.class);
         router.attach("/static", directory);
-        router.attach("/people", PeopleResource.class);
-        router.attach("/people/", PeopleResource.class);
-        router.attach("/people/{userId}", PeopleResource.class);
-        router.attach("/people/{userId}/stats", PeopleResource.class);
+        router.attach("/people", FestivaliersResource.class);
+        router.attach("/people/", FestivaliersResource.class);
+        router.attach("/people/{userId}", FestivalierResource.class);
+        router.attach("/people/{userId}/stats", FestivalierResource.class);
         router.attach("/buses", BusesResource.class);
         return router;
     }
