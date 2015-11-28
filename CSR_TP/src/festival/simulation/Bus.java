@@ -6,11 +6,53 @@ import java.util.List;
 
 public class Bus extends Thread{	
 
-	public int placesDispo = 0;
-	public int placesMaxi = 0;
-	public int idBus;
-	public boolean isOnTheRoadAgain = false;
-	public List<Festivalier> festivaliers;
+	private int placesDispo = 0;
+	private int placesMaxi = 0;
+	private int idBus;
+	private boolean isOnTheRoadAgain = false;
+	private List<Festivalier> festivaliers;
+
+	
+	
+	public int getPlacesDispo() {
+		return placesDispo;
+	}
+
+	public void setPlacesDispo(int placesDispo) {
+		this.placesDispo = placesDispo;
+	}
+
+	public int getPlacesMaxi() {
+		return placesMaxi;
+	}
+
+	public void setPlacesMaxi(int placesMaxi) {
+		this.placesMaxi = placesMaxi;
+	}
+
+	public int getIdBus() {
+		return idBus;
+	}
+
+	public void setIdBus(int idBus) {
+		this.idBus = idBus;
+	}
+
+	public boolean isOnTheRoadAgain() {
+		return isOnTheRoadAgain;
+	}
+
+	public void setOnTheRoadAgain(boolean isOnTheRoadAgain) {
+		this.isOnTheRoadAgain = isOnTheRoadAgain;
+	}
+
+	public List<Festivalier> getFestivaliers() {
+		return festivaliers;
+	}
+
+	public void setFestivaliers(List<Festivalier> festivaliers) {
+		this.festivaliers = festivaliers;
+	}
 
 	public Bus(int idBus, int placesMaxi){
 		this.idBus = idBus;
@@ -23,9 +65,9 @@ public class Bus extends Thread{
 	public synchronized void viderBus() {
 		this.placesDispo = this.placesMaxi;
 		for(Festivalier f : festivaliers) {
-			f.state.put('D', System.currentTimeMillis());
+			f.getStatus().put('D', System.currentTimeMillis());
 			f.setMonBus(null);
-			System.out.println("STATE D - Le festivalier " + f.numFestivalier + " sort du bus n°" + this.idBus + " (" + this.placesDispo + " / " + this.placesMaxi + ").");
+			System.out.println("STATE D - Le festivalier " + f.getNumFestivalier() + " sort du bus n°" + this.idBus + " (" + this.placesDispo + " / " + this.placesMaxi + ").");
 		}
 		festivaliers.clear();
 		notifyAll();
@@ -74,7 +116,7 @@ public class Bus extends Thread{
 		// tant qu'il y a des threads actifs
 		while(true){
 			
-			System.out.println("Le bus : " + this.idBus + " est disponible !");			
+			System.out.println("Le bus : " + this.getIdBus() + " est disponible !");			
 			
 			// Attends les passagers
 			waitFestivalier();

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>RESTlet Twitter</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">RESTlet Twitter</a>
+                <p class="navbar-text" alt="foo">Mon mini Twitter en RESTlet</p>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+      	<div class="col-md-6 col-md-offset-3">
+          <h1>Créer un utilisateur</h1>
+          <form id="create-user-form">
+              <div class="form-group">
+                  <label for="name">Nom de l'utilisateur</label>
+                  <input type="text" class="form-control" id="name"
+                         placeholder="Nom">
+              </div>
+              <div class="form-group">
+                  <label for="age">Age de l'utilisateur</label>
+                  <input type="number" class="form-control" id="age"
+                         placeholder="Age">
+              </div>
+              <button type="submit" class="btn btn-default"
+                      onclick="return false">
+                  Créer utilisateur</button>
+
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+      	<div class="col-md-6 col-md-offset-3">
+          <h1>Liste des utilisateurs</h1>
+          <table class="table table-striped table-hover" id="users-table">
+              <thead>
+                  <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Age</th>
+                      <th>Options</th>
+                  </tr>
+              </thead>
+              <tbody></tbody>
+          </table>
+          </div>
+      </div>
+    </div>
+
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src='/static/js/main.js' type='text/javascript'></script>
+</body>
+</html>

@@ -15,7 +15,7 @@ public class SiteDepart {
 		
 		while(true) {
 			for (Bus unBus : buses) {
-				if (!unBus.isOnTheRoadAgain && unBus.placesDispo <= unBus.placesMaxi && unBus.placesDispo > 0){
+				if (!unBus.isOnTheRoadAgain() && unBus.getPlacesDispo() <= unBus.getPlacesMaxi() && unBus.getPlacesDispo() > 0){
 					try {
 						unBus.prendrePassager(f);
 					} catch (Exception e) {

@@ -7,7 +7,17 @@ public class Billeterie {
 
 	static final int stock = 100;
 
-	public int currentStock;
+	private int currentStock;
+
+	public int getCurrentStock() {
+		return currentStock;
+	}
+
+
+	public void setCurrentStock(int currentStock) {
+		this.currentStock = currentStock;
+	}
+
 
 	public Billeterie() {
 		this.currentStock = stock;
