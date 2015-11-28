@@ -2,14 +2,13 @@ $(document).ready(function() {
     $("#create-user-form button").click( function() {
         var new_user = new Object();
 
-        new_user.name = $('input#name').val();
-        new_user.age = $('input#age').val()
+        new_user.nb_new_users = $('input#nb_new_users').val();
 
         console.log(new_user);
 
         $.ajax({
             type: "post",
-            url: "/users/",
+            url: "/people/",
             data: JSON.stringify(new_user),
             success: function(data){
                 console.log(data);
@@ -25,22 +24,18 @@ $(document).ready(function() {
 
         $.ajax({
             type: "get",
-            url: "/users/",
+            url: "/people/",
             success: function(data){
                 console.log(data);
 
                 $.each(data, function (item) {
-                    var name = data[item].name;
-                    var age = data[item].age;
                     var id = data[item].id;
                     var url = data[item].url;
-                    var tweet_url = data[item].tweet_url;
 
                     users_table.append(
                     '<tr>' +
                         '<th><a href="' + url + '">' + id + '</a></th>' +
-                        '<td>' + name + '</td>' +
-                        '<td>' + age + '</td>' +
+                        '<td>' + url + '</td>' +
                         '<td><a type="button" class="btn btn-success btn-xs" href = "'+ tweet_url + '">tweets</a> ' +
                         '<button type="button" class="btn btn-danger btn-xs" id="delete-user-' + id +'">delete</button></td>' +
                     '</tr>'

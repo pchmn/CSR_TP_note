@@ -8,8 +8,9 @@ import org.restlet.data.Protocol;
 import org.restlet.data.Reference;
 import org.restlet.resource.Directory;
 
-import festival.application.MyTwitterApplication;
+import festival.application.MyFestivalApplication;
 import festival.backend.Backend;
+import festival.simulation.Simulation;
 
 /**
  * Main RESTlet minimal example
@@ -40,7 +41,7 @@ public final class Main
         component.getClients().add(Protocol.FILE);
 
         // Create an application
-        Application application = new MyTwitterApplication(context);
+        Application application = new MyFestivalApplication(context);
 
         // Add the backend into component's context
         Backend backend = new Backend();
@@ -49,6 +50,12 @@ public final class Main
        
         // Start the component
         component.start();
+        
+		
+        // Run a simulation
+//        Simulation simulation = new Simulation();
+//		simulation.addPeople(12);
+//		simulation.addBuses(2,4);
     }
 
 }

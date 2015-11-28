@@ -1,4 +1,4 @@
-package festival.simulation;
+package festival.internals;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -3,6 +3,11 @@ package festival.simulation;
 import java.util.ArrayList;
 import java.util.List;
 
+import festival.internals.Billeterie;
+import festival.internals.Bus;
+import festival.internals.Festivalier;
+import festival.internals.SiteDepart;
+
 public class Simulation {
 
 	public List<Bus> mesBus;

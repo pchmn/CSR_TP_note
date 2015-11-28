@@ -1,4 +1,4 @@
-package festival.simulation;
+package festival.internals;
 
 import java.security.Timestamp;
 import java.util.ArrayList;
@@ -62,6 +62,14 @@ public class Bus extends Thread{
 		this.festivaliers = new ArrayList<Festivalier>();
 	}
 
+	public Bus(int placesMaxi) {
+		this.idBus = 0;
+		this.placesMaxi = placesMaxi;
+		this.placesDispo = placesMaxi;
+		this.isOnTheRoadAgain = false;
+		this.festivaliers = new ArrayList<Festivalier>();
+	}
+
 	public synchronized void viderBus() {
 		this.placesDispo = this.placesMaxi;
 		for(Festivalier f : festivaliers) {
@@ -71,7 +79,6 @@ public class Bus extends Thread{
 		}
 		festivaliers.clear();
 		notifyAll();
-		System.out.println("Le bus " + this.idBus + " est vide !");
 		System.out.println(festivaliers.size());
 	}
 

@@ -13,7 +13,8 @@ import org.restlet.resource.Directory;
 import org.restlet.routing.Router;
 
 import festival.resources.RootResource;
-import festival.resources.TweetsResource;
+import festival.resources.BusesResource;
+import festival.resources.PeopleResource;
 import festival.resources.UserResource;
 import festival.resources.UsersResource;
 
@@ -24,10 +25,10 @@ import festival.resources.UsersResource;
  * @author msimonin
  *
  */
-public class MyTwitterApplication extends Application
+public class MyFestivalApplication extends Application
 {
 
-    public MyTwitterApplication(Context context)
+    public MyFestivalApplication(Context context)
     {
         super(context);
     }
@@ -43,12 +44,11 @@ public class MyTwitterApplication extends Application
         Router router = new Router(getContext());
         router.attach("/", RootResource.class);
         router.attach("/static", directory);
-        router.attach("/users", UsersResource.class);
-        router.attach("/users/", UsersResource.class);
-        router.attach("/users/{userId}", UserResource.class);
-        router.attach("/users/{userId}/", UserResource.class);
-        router.attach("/users/{userId}/tweets", TweetsResource.class);
-        router.attach("/users/{userId}/tweets/", TweetsResource.class);
+        router.attach("/people", PeopleResource.class);
+        router.attach("/people/", PeopleResource.class);
+        router.attach("/people/{userId}", PeopleResource.class);
+        router.attach("/people/{userId}/stats", PeopleResource.class);
+        router.attach("/buses", BusesResource.class);
         return router;
     }
 }

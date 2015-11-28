@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import festival.database.api.Database;
+import festival.internals.Billeterie;
+import festival.internals.Festivalier;
+import festival.internals.SiteDepart;
 import festival.internals.User;
 
 /**
@@ -18,55 +21,33 @@ import festival.internals.User;
  */
 public class InMemoryDatabase implements Database
 {
-
+    
     /** User count (next id to give).*/
-    private int userCount_;
+    private int festivalierCount_;
 
     /** User Hashmap. */
-    Map<Integer, User> users_;
+    Map<Integer, Festivalier> festivaliers_;
 
 
     public InMemoryDatabase()
     {
-        users_ = new HashMap<Integer, User>();
+        festivaliers_ = new HashMap<Integer, Festivalier>();
     }
 
-    /**
-     *
-     * Synchronized user creation.
-     * @param name
-     * @param age
-     *
-     * @return the user created
-     * @throws InterruptedException 
-     */
+
     @Override
-    public synchronized User createUser(String name, int age) throws InterruptedException
+    public synchronized Festivalier createPeople(Billeterie billeterie, SiteDepart siteDepart) throws InterruptedException
     {
-        User user = new User(name, age);
-        user.setId(userCount_);
-        users_.put(userCount_, user);
+    	Festivalier festivalier = new Festivalier(billeterie, siteDepart);
+        festivalier.setNumFestivalier(festivalierCount_);
+        festivaliers_.put(festivalierCount_, festivalier);
         Thread.sleep(100);
-        userCount_ ++;
-        return user;
-    }
-
-    @Override
-    public Collection<User> getUsers()
-    {
-        return users_.values();
-    }
-
-    @Override
-    public User getUser(int id)
-    {
-        return users_.get(id);
+        festivalierCount_ ++;
+        return festivalier;
     }
 
 	@Override
-	public User deleteUser(User user) {
-		// TODO Auto-generated method stub
-		return users_.remove(user.getId());
+	public Collection<Festivalier> getFestivaliers() {
+		return festivaliers_.values();
 	}
-
 }

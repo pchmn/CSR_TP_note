@@ -1,6 +1,9 @@
-package festival.simulation;
+package festival.internals;
 
+import java.sql.DatabaseMetaData;
 import java.util.HashMap;
+
+import festival.database.api.Database;
 
 
 public class Festivalier extends Thread {
@@ -54,14 +57,17 @@ public class Festivalier extends Thread {
 		this.numFestivalier = numFestivalier;
 		this.siteDepart = siteDepart;
 		this.status.put('A', System.currentTimeMillis());
-		System.out.println("STATE A - Le festivalier " + this.numFestivalier + " est en route");
+	}
+	
+	public Festivalier(Billeterie billeterie, SiteDepart siteDepart) {
+		this.maBilleterie = billeterie;
+		this.numFestivalier = 0;
+		this.siteDepart = siteDepart;
+		this.status.put('A', System.currentTimeMillis());
 	}
 	
 	public void setMonBus(Bus bus){
 		this.monBus = bus;
-		if(bus != null) {
-			System.out.println("Le festivalier " + this.numFestivalier + " a pris le bus " + this.monBus.getId());	
-		}
 	}
 
 	// Le festivalier achete un ticket

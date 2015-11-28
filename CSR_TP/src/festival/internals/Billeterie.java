@@ -1,4 +1,4 @@
-package festival.simulation;
+package festival.internals;
 
 
 public class Billeterie {

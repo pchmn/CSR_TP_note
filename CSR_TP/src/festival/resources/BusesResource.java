@@ -18,10 +18,11 @@ import org.restlet.resource.ResourceException;
 import org.restlet.resource.ServerResource;
 
 import festival.backend.Backend;
+import festival.internals.Bus;
 import festival.internals.Tweet;
 import festival.internals.User;
 
-public class TweetsResource extends ServerResource {
+public class BusesResource extends ServerResource {
 
 	/** Backend. */
 	private Backend backend_;
@@ -32,7 +33,7 @@ public class TweetsResource extends ServerResource {
 	/**
 	 * Constructor. Call for every single user request.
 	 */
-	public TweetsResource() {
+	public BusesResource() {
 		super();
 		backend_ = (Backend) getApplication().getContext().getAttributes().get("backend");
 	}
@@ -58,48 +59,26 @@ public class TweetsResource extends ServerResource {
 	}
 
 	/**
-	 * Returns the list of the tweets of a user
-	 *
-	 * @return JSON representation of the tweets
-	 * @throws JSONException
-	 */
-	@Get("json")
-	public Representation getTweets() throws JSONException {
-		List<Tweet> tweets = user_.getTweets();
-		Collection<JSONObject> jsonTweets = new ArrayList<JSONObject>();
-
-		for (Tweet tweet : tweets) {
-			JSONObject current = toJson(tweet);
-			jsonTweets.add(current);
-		}
-		JSONArray jsonArray = new JSONArray(jsonTweets);
-		JsonRepresentation result = new JsonRepresentation(jsonArray);
-		result.setIndenting(true);
-		return result;
-	}
-
-	/**
-	 * Create a tweet for the user whose id is userId
+	 * Create a bus
 	 * 
 	 * @param json
-	 *            representation of the tweet to create
-	 * @return JSON representation of the newly created tweet
+	 *            representation of the bus to create
+	 * @return JSON representation of the newly created bus
 	 * @throws JSONException
 	 */
 	@Post("json")
-	public Representation createTweet(JsonRepresentation representation) throws Exception {
+	public Representation createBus(JsonRepresentation representation) throws Exception {
 		JSONObject object = representation.getJsonObject();
-		Tweet tweet = new Tweet(object.getString("content"));
-		user_.addTweet(tweet);
-		JSONObject jsonTweet = toJson(tweet);
-		JsonRepresentation result = new JsonRepresentation(jsonTweet);
+		Bus bus = new Bus(object.getInt("nb_places"));
+		JSONObject jsonBus = toJson(bus);
+		JsonRepresentation result = new JsonRepresentation(jsonBus);
 		result.setIndenting(true);
 		return result;
 	}
 
-	private JSONObject toJson(Tweet tweet) throws JSONException {
+	private JSONObject toJson(Bus bus) throws JSONException {
 		JSONObject current = new JSONObject();
-		current.put("content", tweet.getContent());
+		current.put("nb_places", bus.getPlacesMaxi());
 		return current;
 	}
 }
