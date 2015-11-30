@@ -13,11 +13,10 @@ import org.restlet.resource.Directory;
 import org.restlet.routing.Router;
 
 import festival.resources.RootResource;
+import festival.resources.StatsResource;
 import festival.resources.BusesResource;
 import festival.resources.FestivalierResource;
 import festival.resources.FestivaliersResource;
-import festival.resources.UserResource;
-import festival.resources.UsersResource;
 
 /**
  *
@@ -48,7 +47,7 @@ public class MyFestivalApplication extends Application
         router.attach("/people", FestivaliersResource.class);
         router.attach("/people/", FestivaliersResource.class);
         router.attach("/people/{userId}", FestivalierResource.class);
-        router.attach("/people/{userId}/stats", FestivalierResource.class);
+        router.attach("/people/{userId}/stats", StatsResource.class);
         router.attach("/buses", BusesResource.class);
         return router;
     }

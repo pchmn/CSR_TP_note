@@ -110,8 +110,17 @@ public class Festivalier extends Thread {
 
 
 	public void run() {
+		
+		// Simule la marche jusqu'à la billeterie
+		try {
+			sleep(2000);
+		} catch (Exception e) {
+
+		}
+		
 		acheter();
 
+		// Simule la marche jusqu'au bus
 		try {
 			sleep(2000);
 		} catch (Exception e) {

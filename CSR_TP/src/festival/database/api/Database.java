@@ -6,7 +6,6 @@ import java.util.List;
 import festival.internals.Billeterie;
 import festival.internals.Festivalier;
 import festival.internals.SiteDepart;
-import festival.internals.User;
 
 /**
  *

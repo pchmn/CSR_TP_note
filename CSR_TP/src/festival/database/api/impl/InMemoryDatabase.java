@@ -10,7 +10,6 @@ import festival.database.api.Database;
 import festival.internals.Billeterie;
 import festival.internals.Festivalier;
 import festival.internals.SiteDepart;
-import festival.internals.User;
 
 /**
  *
