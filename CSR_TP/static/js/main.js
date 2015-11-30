@@ -8,7 +8,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: "post",
-            url: "/people/",
+            url: "/people",
             data: JSON.stringify(new_user),
             success: function(data){
                 console.log(data);
@@ -45,7 +45,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: "get",
-            url: "/people/",
+            url: "/people",
             success: function(data){
                 console.log(data);
 
@@ -57,8 +57,7 @@ $(document).ready(function() {
                     '<tr>' +
                         '<th><a href="' + url + '">' + id + '</a></th>' +
                         '<td>' + url + '</td>' +
-                        '<td><a type="button" class="btn btn-success btn-xs" href = "'+ tweet_url + '">tweets</a> ' +
-                        '<button type="button" class="btn btn-danger btn-xs" id="delete-user-' + id +'">delete</button></td>' +
+                        '<td><a type="button" class="btn btn-success btn-xs" href = "'+ url + '">details</a> ' +
                     '</tr>'
                     );
 

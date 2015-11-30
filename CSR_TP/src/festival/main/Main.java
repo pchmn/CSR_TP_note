@@ -44,14 +44,16 @@ public final class Main
         Backend backend = new Backend();
         context.getAttributes().put("backend", backend);
         component.getDefaultHost().attach(application);
-       
+
+        Simulation simulation = new Simulation();
+        
         // Start the component
         component.start();
         
 		
         // Run a simulation
-        Simulation simulation = new Simulation();
-		simulation.addPeople(2);
+//        Simulation simulation = new Simulation();
+//		simulation.addPeople(2);
 //		simulation.addBuses(2,4);
     }
 

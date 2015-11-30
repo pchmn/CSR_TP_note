@@ -33,16 +33,21 @@ public class InMemoryDatabase implements Database
     /** User Hashmap. */
     Map<Integer, Bus> buses_;
 
-
+    private Billeterie billeterie;
+	private SiteDepart siteDepart;
+	
     public InMemoryDatabase()
     {
+    	billeterie = new Billeterie();
+    	siteDepart = new SiteDepart();
         festivaliers_ = new HashMap<Integer, Festivalier>();
         buses_ = new HashMap<Integer, Bus>();
+        
     }
 
 
     @Override
-    public synchronized Festivalier createPeople(Billeterie billeterie, SiteDepart siteDepart) throws InterruptedException
+    public synchronized Festivalier createPeople() throws InterruptedException
     {
     	Festivalier festivalier = new Festivalier(billeterie, siteDepart);
         festivalier.setNumFestivalier(festivalierCount_);
@@ -64,9 +69,10 @@ public class InMemoryDatabase implements Database
 
 
 	@Override
-	public Bus createBus(int nbPlaces) throws InterruptedException{
+	public synchronized Bus createBus(int nbPlaces) throws InterruptedException{
 		Bus bus = new Bus(nbPlaces);
         bus.setIdBus(busCount_);
+		siteDepart.buses.add(bus);
         buses_.put(busCount_, bus);
         bus.start();
         Thread.sleep(100);

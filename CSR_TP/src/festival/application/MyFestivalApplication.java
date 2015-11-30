@@ -44,7 +44,7 @@ public class MyFestivalApplication extends Application
         router.attach("/", RootResource.class);
         router.attach("/static", directory);
         router.attach("/people", FestivaliersResource.class);
-        router.attach("/people/", FestivaliersResource.class);
+        router.attach("/people", FestivaliersResource.class);
         router.attach("/people/{userId}", FestivalierResource.class);
         router.attach("/people/{userId}/stats", StatsResource.class);
         router.attach("/buses/", BusesResource.class);

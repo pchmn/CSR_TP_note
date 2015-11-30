@@ -13,9 +13,7 @@ import org.restlet.resource.Post;
 import org.restlet.resource.ServerResource;
 
 import festival.backend.Backend;
-import festival.internals.Billeterie;
 import festival.internals.Festivalier;
-import festival.internals.SiteDepart;
 
 public class FestivaliersResource extends ServerResource{
 
@@ -71,20 +69,17 @@ public class FestivaliersResource extends ServerResource{
 			throws Exception
 	{
 		JSONObject object = representation.getJsonObject();
-		int age = object.getInt("nb_new_users");
+		int nbNewFestivalier = object.getInt("nb_new_users");
 
 		Collection<JSONObject> newFestivaliers = new ArrayList<JSONObject>();
-		Billeterie billeterie = new Billeterie();
-		SiteDepart siteDepart = new SiteDepart();
 		
-		for (int i = 0; i < age; i++) {
+		for (int i = 0; i < nbNewFestivalier; i++) {
 			JSONObject festivalierObject = new JSONObject();
 			
 			// Save the user
-			Festivalier festivalier = backend_.getDatabase().createPeople(billeterie, siteDepart);
+			Festivalier festivalier = backend_.getDatabase().createPeople();
 			festivalierObject.put("id", festivalier.getNumFestivalier());
 			festivalierObject.put("url", getReference().toString() + festivalier.getNumFestivalier());
-			
 			newFestivaliers.add(festivalierObject);
 		}
 		

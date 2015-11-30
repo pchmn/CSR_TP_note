@@ -11,6 +11,9 @@ public class Festivalier extends Thread {
 	private SiteDepart siteDepart;
 
 	
+/**
+ * ---- Getters and Setters ----
+ */
 	
 	public HashMap<Character, Long> getStatus() {
 		return status;
@@ -47,6 +50,14 @@ public class Festivalier extends Thread {
 	public Bus getMonBus() {
 		return monBus;
 	}
+	
+	public void setMonBus(Bus bus){
+		this.monBus = bus;
+	}
+	
+/**
+ * ---- ------------ ----
+ */
 
 	public Festivalier(int numFestivalier, Billeterie billeterie, SiteDepart siteDepart) {
 		this.maBilleterie = billeterie;
@@ -60,10 +71,6 @@ public class Festivalier extends Thread {
 		this.numFestivalier = 0;
 		this.siteDepart = siteDepart;
 		this.status.put('A', System.currentTimeMillis());
-	}
-	
-	public void setMonBus(Bus bus){
-		this.monBus = bus;
 	}
 
 	// Le festivalier achete un ticket

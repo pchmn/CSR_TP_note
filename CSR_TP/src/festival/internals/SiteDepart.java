@@ -5,10 +5,10 @@ import java.util.List;
 
 public class SiteDepart {
 
-	public List<Bus> buses = new ArrayList<Bus>();
+	public List<Bus> buses;
 	
 	public SiteDepart() {
-		
+		buses = new ArrayList<Bus>();
 	}
 	
 	public synchronized void monterBus(Festivalier f){

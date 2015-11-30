@@ -73,7 +73,7 @@ public class FestivalierResource extends ServerResource{
     private JSONObject toJson(Festivalier festivalier) throws JSONException{
     	JSONObject festivalierObject = new JSONObject();
     	festivalierObject.put("id", festivalier.getNumFestivalier());    	
-    	festivalierObject.put("state", getStatus(festivalier.getStatus()));
+    	festivalierObject.put("state", getLastStatus(festivalier.getStatus()));
         return festivalierObject;
     }
 	
@@ -82,7 +82,7 @@ public class FestivalierResource extends ServerResource{
      * @param statusFestivalier
      * @return l'état du status
      */
-	private Character getStatus(HashMap<Character, Long> statusFestivalier ){
+	private Character getLastStatus(HashMap<Character, Long> statusFestivalier ){
 		Character status = 'N';
 		for (Entry<Character, Long> entry : statusFestivalier.entrySet())
 		{
