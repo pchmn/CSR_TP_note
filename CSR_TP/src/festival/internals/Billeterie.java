@@ -13,7 +13,6 @@ public class Billeterie {
 		return currentStock;
 	}
 
-
 	public void setCurrentStock(int currentStock) {
 		this.currentStock = currentStock;
 	}
@@ -22,8 +21,15 @@ public class Billeterie {
 	public Billeterie() {
 		this.currentStock = stock;
 	}
+	
+	public Billeterie(int nouveauStock) {
+		this.currentStock = nouveauStock;
+	}
 
 
+	/**
+	 * Diminue le stock jusqu'a 0
+	 */
 	public synchronized void vendre() {
 
 		while(this.currentStock == 0){

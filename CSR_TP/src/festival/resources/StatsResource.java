@@ -30,11 +30,18 @@ public class StatsResource extends ServerResource{
 				.get("backend");
 	}
 	
+	/**
+	 * Get the number of festivalier in each stats and the average time to go to the last state  
+	 * @return JSON Representation of the global stats
+	 * @throws JSONException
+	 */
 	@Get("json")
-	public Representation getStats() throws JSONException
-	{
+	public Representation getStats() throws JSONException {
+		
+		// Récupère tous les festivaliers
 		Collection<Festivalier> festivaliers = backend_.getDatabase().getFestivaliers();
 
+		// Map des différents etats avec le nombre de festivalier a cette état
 		HashMap<Character, Integer> states = new HashMap<Character, Integer>();
 		Long tempsTotal = new Long(0);
 		int nbFestivalierArrive = 0;
@@ -60,6 +67,7 @@ public class StatsResource extends ServerResource{
 		}		
 		
 		Long tempsMoyen = new Long(0);
+		// Si il y a des festivaliers en state D, calcul le temps moyen
 		if (nbFestivalierArrive > 0){
 			tempsMoyen = tempsTotal / nbFestivalierArrive;
 		}

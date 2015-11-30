@@ -60,6 +60,12 @@ public class Festivalier extends Thread {
  * ---- ------------ ----
  */
 
+	/**
+	 * Constructeur pour simulation
+	 * @param numFestivalier
+	 * @param billeterie
+	 * @param siteDepart
+	 */
 	public Festivalier(int numFestivalier, Billeterie billeterie, SiteDepart siteDepart) {
 		this.maBilleterie = billeterie;
 		this.numFestivalier = numFestivalier;
@@ -67,6 +73,11 @@ public class Festivalier extends Thread {
 		this.status.put('A', System.currentTimeMillis());
 	}
 	
+	/**
+	 * Constructeur pour database, id rajouté apres
+	 * @param billeterie
+	 * @param siteDepart
+	 */
 	public Festivalier(Billeterie billeterie, SiteDepart siteDepart) {
 		this.maBilleterie = billeterie;
 		this.numFestivalier = 0;
@@ -74,41 +85,33 @@ public class Festivalier extends Thread {
 		this.status.put('A', System.currentTimeMillis());
 	}
 
-	// Le festivalier achete un ticket
+	/**
+	 * Le festivalier achete un billet
+	 */
 	public void acheter(){
+		
+		// Achete un billet si il reste des place
 		try {
 			this.maBilleterie.vendre();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("STATE B - Le festivalier " + this.numFestivalier + " a acheté sa place");
+		
 		this.status.put('B', System.currentTimeMillis());
+		System.out.println("STATE B - Le festivalier " + this.numFestivalier + " a acheté sa place");
 	}
 
+	/**
+	 * Attribut un bus au festivalier
+	 */
 	public void prendreBus(){
 		
 		// On vÃ©rifie qu'il possÃ¨de bien un ticket
 		if (this.status.containsKey('B')) {
 			
 			this.siteDepart.monterBus(this);
-			System.out.println("STATE C - Le festivalier " + this.numFestivalier + " monte dans le bus n°" + this.monBus.getId() + " (" + this.monBus.getPlacesDispo() + " / " + this.monBus.getPlacesMaxi() + ").");
 			this.status.put('C', System.currentTimeMillis());
-		}
-	}
-
-	public synchronized void sortirBus(){
-		
-		// On vÃ©rifie qu'il Ã©tait bien dans le bus
-		if (this.status.containsKey('C')) {
-			while (!this.monBus.isOnTheRoadAgain()){
-				try {
-					wait();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-			System.out.println("STATE D - Le festivalier " + this.numFestivalier + " sort du bus n°" + this.monBus.getId() + " (" + this.monBus.getPlacesDispo() + " / " + this.monBus.getPlacesMaxi() + ").");
-			this.status.put('D', System.currentTimeMillis());		
+			System.out.println("STATE C - Le festivalier " + this.numFestivalier + " monte dans le bus n°" + this.monBus.getId() + " (" + this.monBus.getPlacesDispo() + " / " + this.monBus.getPlacesMaxi() + ").");
 		}
 	}
 	

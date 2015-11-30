@@ -50,9 +50,9 @@ public final class Main
        
         
         // Run a simulation
-//        Simulation simulation = new Simulation();
-//		simulation.addPeople(2);
-//		simulation.addBuses(2,4);
+        Simulation simulation = new Simulation();
+		simulation.addPeople(2);
+		simulation.addBuses(2,4);
     }
 
 }

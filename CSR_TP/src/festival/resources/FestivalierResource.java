@@ -1,8 +1,5 @@
 package festival.resources;
 
-import java.util.HashMap;
-import java.util.Map.Entry;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.restlet.data.Status;
@@ -60,7 +57,7 @@ public class FestivalierResource extends ServerResource{
     @Get("json")
     public Representation getFestivalier() throws JSONException 
     {
-    	// user_ is set by doInit
+    	// festivaler_ is set by doInit
 
         JSONObject festivalierObject = toJson(festivalier_);
         festivalierObject.put("url_stats", getReference().toString() + "/stats");
@@ -70,6 +67,13 @@ public class FestivalierResource extends ServerResource{
         return result;
     }
     
+    
+    /**
+     * Convert a Festivalier to a JSONObject with id and state
+     * @param festivalier
+     * @return JSONObject of a festivalier
+     * @throws JSONException
+     */
     private JSONObject toJson(Festivalier festivalier) throws JSONException{
     	JSONObject festivalierObject = new JSONObject();
     	festivalierObject.put("id", festivalier.getNumFestivalier());    	

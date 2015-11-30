@@ -105,7 +105,7 @@ public class FestivaliersResource extends ServerResource{
 		for (int i = 0; i < nbNewFestivalier; i++) {
 			JSONObject festivalierObject = new JSONObject();
 			
-			// Save the user
+			// Save the festivalier
 			Festivalier festivalier = backend_.getDatabase().createPeople();
 			festivalierObject.put("id", festivalier.getNumFestivalier());
 			festivalierObject.put("url", getReference().toString() + festivalier.getNumFestivalier());

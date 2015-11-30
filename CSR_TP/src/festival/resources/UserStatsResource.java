@@ -52,13 +52,13 @@ public class UserStatsResource extends ServerResource{
 	/**
 	 * Returns the user matching the id given in the URI
 	 * 
-	 * @return JSON representation of a user
+	 * @return JSON representation of a user stats
 	 * @throws JSONException
 	 */
 	@Get("json")
 	public Representation getStats() throws JSONException 
 	{
-		// user_ is set by doInit
+		// festivalier_ is set by doInit
 
 		JSONObject statsObject = toJson(festivalier_);
 
@@ -67,13 +67,19 @@ public class UserStatsResource extends ServerResource{
 		return result;
 	}
 
+	/**
+	 * Convert a festivalier to a JSONObject
+	 * @param festivalier
+	 * @return JSONObject
+	 * @throws JSONException
+	 */
 	private JSONObject toJson(Festivalier festivalier) throws JSONException{
 		JSONObject statusObject = new JSONObject();
-		for (Entry<Character, Long> entry : festivalier.getStatus().entrySet())
-		{
+		
+		// Parcours les différents status d'un festivalier
+		for (Entry<Character, Long> entry : festivalier.getStatus().entrySet()){
 			statusObject.put(entry.getKey().toString(), entry.getValue());
 		}
-
 		return statusObject;
 	}
 }
