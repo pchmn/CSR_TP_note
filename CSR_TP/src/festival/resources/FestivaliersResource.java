@@ -88,4 +88,33 @@ public class FestivaliersResource extends ServerResource{
 		JsonRepresentation result = new JsonRepresentation(jsonArray);
 		return result;
 	}
+	
+	/**
+	 * Create a user with the data present in the json representation
+	 * 
+	 * @param json representation of the user to create
+	 * @return JSON representation of the newly created user
+	 * @throws JSONException
+	 */
+	public Representation createPeople(int nbNewFestivalier)
+			throws Exception
+	{
+
+		Collection<JSONObject> newFestivaliers = new ArrayList<JSONObject>();
+		
+		for (int i = 0; i < nbNewFestivalier; i++) {
+			JSONObject festivalierObject = new JSONObject();
+			
+			// Save the user
+			Festivalier festivalier = backend_.getDatabase().createPeople();
+			festivalierObject.put("id", festivalier.getNumFestivalier());
+			festivalierObject.put("url", getReference().toString() + festivalier.getNumFestivalier());
+			newFestivaliers.add(festivalierObject);
+		}
+		
+		// generate result
+		JSONArray jsonArray = new JSONArray(newFestivaliers);
+		JsonRepresentation result = new JsonRepresentation(jsonArray);
+		return result;
+	}
 }

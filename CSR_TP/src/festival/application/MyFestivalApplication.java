@@ -13,6 +13,7 @@ import org.restlet.routing.Router;
 
 import festival.resources.RootResource;
 import festival.resources.StatsResource;
+import festival.resources.UserStatsResource;
 import festival.resources.BusesResource;
 import festival.resources.FestivalierResource;
 import festival.resources.FestivaliersResource;
@@ -46,8 +47,9 @@ public class MyFestivalApplication extends Application
         router.attach("/people", FestivaliersResource.class);
         router.attach("/people", FestivaliersResource.class);
         router.attach("/people/{userId}", FestivalierResource.class);
-        router.attach("/people/{userId}/stats", StatsResource.class);
+        router.attach("/people/{userId}/stats", UserStatsResource.class);
         router.attach("/buses/", BusesResource.class);
+        router.attach("/stats", StatsResource.class);
         return router;
     }
 }

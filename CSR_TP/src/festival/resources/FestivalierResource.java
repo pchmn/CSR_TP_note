@@ -73,21 +73,9 @@ public class FestivalierResource extends ServerResource{
     private JSONObject toJson(Festivalier festivalier) throws JSONException{
     	JSONObject festivalierObject = new JSONObject();
     	festivalierObject.put("id", festivalier.getNumFestivalier());    	
-    	festivalierObject.put("state", getLastStatus(festivalier.getStatus()));
+    	festivalierObject.put("state", festivalier.getLastStatus());
         return festivalierObject;
     }
 	
-    /**
-     * Récupère le dernier status d'un liste de status
-     * @param statusFestivalier
-     * @return l'état du status
-     */
-	private Character getLastStatus(HashMap<Character, Long> statusFestivalier ){
-		Character status = 'N';
-		for (Entry<Character, Long> entry : statusFestivalier.entrySet())
-		{
-			status = entry.getKey();
-		}
-    	return status;
-	}
+
 }

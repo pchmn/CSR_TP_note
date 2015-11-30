@@ -1,6 +1,7 @@
 package festival.internals;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class Festivalier extends Thread {
 
@@ -109,6 +110,20 @@ public class Festivalier extends Thread {
 			System.out.println("STATE D - Le festivalier " + this.numFestivalier + " sort du bus n°" + this.monBus.getId() + " (" + this.monBus.getPlacesDispo() + " / " + this.monBus.getPlacesMaxi() + ").");
 			this.status.put('D', System.currentTimeMillis());		
 		}
+	}
+	
+    /**
+     * Récupère le dernier status d'un liste de status
+     * @param statusFestivalier
+     * @return l'état du status
+     */
+	public Character getLastStatus(){
+		Character status = 'N';
+		for (Entry<Character, Long> entry : this.status.entrySet())
+		{
+			status = entry.getKey();
+		}
+    	return status;
 	}
 
 
