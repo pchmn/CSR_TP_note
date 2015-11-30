@@ -3,10 +3,7 @@ package festival.main;
 import org.restlet.Application;
 import org.restlet.Component;
 import org.restlet.Context;
-import org.restlet.Restlet;
 import org.restlet.data.Protocol;
-import org.restlet.data.Reference;
-import org.restlet.resource.Directory;
 
 import festival.application.MyFestivalApplication;
 import festival.backend.Backend;

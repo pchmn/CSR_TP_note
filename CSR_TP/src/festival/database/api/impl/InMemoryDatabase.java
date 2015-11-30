@@ -2,12 +2,11 @@ package festival.database.api.impl;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import festival.database.api.Database;
 import festival.internals.Billeterie;
+import festival.internals.Bus;
 import festival.internals.Festivalier;
 import festival.internals.SiteDepart;
 
@@ -27,11 +26,18 @@ public class InMemoryDatabase implements Database
 
     /** User Hashmap. */
     Map<Integer, Festivalier> festivaliers_;
+    
+    /** User count (next id to give).*/
+    private int busCount_;
+
+    /** User Hashmap. */
+    Map<Integer, Bus> buses_;
 
 
     public InMemoryDatabase()
     {
         festivaliers_ = new HashMap<Integer, Festivalier>();
+        buses_ = new HashMap<Integer, Bus>();
     }
 
 
@@ -54,5 +60,17 @@ public class InMemoryDatabase implements Database
 	
 	public Festivalier getFestivalier(int id){
 		return festivaliers_.get(id);
+	}
+
+
+	@Override
+	public Bus createBus(int nbPlaces) throws InterruptedException{
+		Bus bus = new Bus(nbPlaces);
+        bus.setIdBus(busCount_);
+        buses_.put(busCount_, bus);
+        bus.start();
+        Thread.sleep(100);
+        busCount_ ++;
+        return bus;
 	}
 }

@@ -1,9 +1,9 @@
 package festival.database.api;
 
 import java.util.Collection;
-import java.util.List;
 
 import festival.internals.Billeterie;
+import festival.internals.Bus;
 import festival.internals.Festivalier;
 import festival.internals.SiteDepart;
 
@@ -22,5 +22,7 @@ public interface Database
 	Festivalier createPeople(Billeterie billeterie, SiteDepart siteDepart) throws InterruptedException;
 
 	Festivalier getFestivalier(int userId);
+
+	Bus createBus(int nbPlaces) throws InterruptedException;
 
 }

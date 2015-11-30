@@ -8,7 +8,6 @@ import java.io.File;
 import org.restlet.Application;
 import org.restlet.Context;
 import org.restlet.Restlet;
-import org.restlet.data.Reference;
 import org.restlet.resource.Directory;
 import org.restlet.routing.Router;
 
@@ -48,7 +47,7 @@ public class MyFestivalApplication extends Application
         router.attach("/people/", FestivaliersResource.class);
         router.attach("/people/{userId}", FestivalierResource.class);
         router.attach("/people/{userId}/stats", StatsResource.class);
-        router.attach("/buses", BusesResource.class);
+        router.attach("/buses/", BusesResource.class);
         return router;
     }
 }

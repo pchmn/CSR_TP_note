@@ -1,6 +1,5 @@
 package festival.resources;
 
-import java.util.HashMap;
 import java.util.Map.Entry;
 
 import org.json.JSONException;

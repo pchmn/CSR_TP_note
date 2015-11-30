@@ -1,10 +1,6 @@
 package festival.internals;
 
-import java.sql.DatabaseMetaData;
 import java.util.HashMap;
-
-import festival.database.api.Database;
-
 
 public class Festivalier extends Thread {
 

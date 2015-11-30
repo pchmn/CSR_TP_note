@@ -18,6 +18,27 @@ $(document).ready(function() {
             contentType : "application/json"
         });
     });
+    
+    $("#create-bus-form button").click( function() {
+        var new_buses = new Object();
+
+        new_buses.nb_new_buses = $('input#nb_new_buses').val();
+        new_buses.nb_places = $('input#nb_places').val();
+
+        console.log(new_buses);
+
+        $.ajax({
+            type: "post",
+            url: "/buses/",
+            data: JSON.stringify(new_buses),
+            success: function(data){
+                console.log(data);
+                window.location = "/";
+            },
+            dataType: "json",
+            contentType : "application/json"
+        });
+    });
 
     if($('#users-table').length) {
         var users_table = $('#users-table tbody');

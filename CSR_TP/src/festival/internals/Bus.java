@@ -1,6 +1,5 @@
 package festival.internals;
 
-import java.security.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,7 +78,6 @@ public class Bus extends Thread{
 		}
 		festivaliers.clear();
 		notifyAll();
-		System.out.println(festivaliers.size());
 	}
 
 	public synchronized void prendrePassager(Festivalier f) {
