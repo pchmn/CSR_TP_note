@@ -19,7 +19,7 @@ public class SiteDepart {
 		
 		// Tant qu'aucun bus ne lui est attribué
 		while(true) {
-			
+			// TODO Concurrent ModificationException
 			// Parcours les différents bus
 			for (Bus unBus : buses) {
 				

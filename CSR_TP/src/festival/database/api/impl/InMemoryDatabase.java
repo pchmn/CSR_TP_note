@@ -72,8 +72,8 @@ public class InMemoryDatabase implements Database
 	public synchronized Bus createBus(int nbPlaces) throws InterruptedException{
 		Bus bus = new Bus(nbPlaces);
         bus.setIdBus(busCount_);
-		siteDepart.buses.add(bus);
         buses_.put(busCount_, bus);
+		siteDepart.buses.add(bus);
         bus.start();
         Thread.sleep(100);
         busCount_ ++;

@@ -58,6 +58,7 @@ $(document).ready(function() {
                         '<th><a href="' + url + '">' + id + '</a></th>' +
                         '<td>' + url + '</td>' +
                         '<td><a type="button" class="btn btn-success btn-xs" href = "'+ url + '">details</a> ' +
+                        '<td><a type="button" class="btn btn-success btn-xs" href = "'+ url + '/stats">stats</a> ' +
                     '</tr>'
                     );
 
@@ -82,23 +83,41 @@ $(document).ready(function() {
         });
     }
 
-    if($('#tweets-list').length) {
-        var tweets_list = $('ul#tweets-list');
+    if($('#details-list').length) {
+        var tweets_list = $('ul#details-list');
 
         $.ajax({
             type: "get",
             url: window.location.href,
             success: function(data){
                 console.log(data);
-                if(data.length == 0) {
-                  tweets_list.append('<li>Aucun tweet</li>');
-                }
-                else {
-                  $.each(data, function (item) {
-                      var tweet = data[item].content;
-                      tweets_list.append('<li>' + tweet + '</li>');
-                  });
-                }
+	              var id = data.id;
+	              var state = data.state;
+	              var url_stats = data.url_stats;
+	              tweets_list.append('<li> id : ' + id + '</li>');
+	              tweets_list.append('<li> state : ' + state + '</li>');
+	              tweets_list.append('<li><a type="button" class="btn btn-success btn-xs" href = "'+ url_stats + '">stats</a> </li>');
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log("ajax error");
+            },
+            dataType: "json",
+            contentType : "application/json"
+        });
+    }
+    
+    
+    if($('#stat-user-list').length) {
+        var tweets_list = $('ul#stat-user-list');
+
+        $.ajax({
+            type: "get",
+            url: window.location.href,
+            success: function(data){
+                console.log(data);
+	             $.each(data, function (index, element) {
+                	tweets_list.append('<li> ' + index + ' : ' + element + '</li>');
+                });
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log("ajax error");

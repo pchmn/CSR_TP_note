@@ -4,8 +4,10 @@ import java.util.Map.Entry;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.restlet.data.MediaType;
 import org.restlet.data.Status;
 import org.restlet.ext.json.JsonRepresentation;
+import org.restlet.representation.FileRepresentation;
 import org.restlet.representation.Representation;
 import org.restlet.resource.Get;
 import org.restlet.resource.ResourceException;
@@ -48,7 +50,7 @@ public class UserStatsResource extends ServerResource{
 			getResponse().setStatus(Status.CLIENT_ERROR_NOT_FOUND);
 		}
 	}
-
+	
 	/**
 	 * Returns the user matching the id given in the URI
 	 * 

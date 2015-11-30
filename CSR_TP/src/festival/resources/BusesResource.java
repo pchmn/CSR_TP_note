@@ -40,15 +40,13 @@ public class BusesResource extends ServerResource {
 		JSONObject object = representation.getJsonObject();
 		int nbBuses = object.getInt("nb_new_buses");
 		int nbPlaces = object.getInt("nb_places");
-		
-		System.out.println("nbBuses");
 
 		Collection<JSONObject> newBuses = new ArrayList<JSONObject>();
 		
 		for (int i = 0; i < nbBuses; i++) {
 			JSONObject busObject = new JSONObject();
 			
-			// Save the user
+			// Save the bus
 			Bus bus = backend_.getDatabase().createBus(nbPlaces);
 			busObject.put("id", bus.getIdBus());
 			busObject.put("nbPlaces", bus.getPlacesMaxi());

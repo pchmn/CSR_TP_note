@@ -2,8 +2,10 @@ package festival.resources;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.restlet.data.MediaType;
 import org.restlet.data.Status;
 import org.restlet.ext.json.JsonRepresentation;
+import org.restlet.representation.FileRepresentation;
 import org.restlet.representation.Representation;
 import org.restlet.resource.Get;
 import org.restlet.resource.ResourceException;
@@ -47,6 +49,11 @@ public class FestivalierResource extends ServerResource{
             getResponse().setStatus(Status.CLIENT_ERROR_NOT_FOUND);
         }
     }
+    
+	@Get("html")
+	public Representation getUsersHtml() {
+		return new FileRepresentation("templates/details.html", MediaType.TEXT_HTML);
+	}
     
     /**
      * Returns the user matching the id given in the URI
