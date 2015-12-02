@@ -36,8 +36,7 @@ public class InMemoryDatabase implements Database
     private Billeterie billeterie;
 	private SiteDepart siteDepart;
 	
-    public InMemoryDatabase()
-    {
+    public InMemoryDatabase() {
     	billeterie = new Billeterie();
     	siteDepart = new SiteDepart();
         festivaliers_ = new HashMap<Integer, Festivalier>();

@@ -50,9 +50,18 @@ public final class Main
        
         
         // Run a simulation
-        Simulation simulation = new Simulation();
-//		simulation.addPeople(2);
-//		simulation.addBuses(2,4);
+//        Simulation simulation = new Simulation();
+        int i = 0;
+        while(i <= 10){
+            backend.getDatabase().createPeople();
+        	i++;
+        }
+        
+        int j = 0;
+        while(j <= 10){
+            backend.getDatabase().createBus(2);
+        	j++;
+        }
     }
 
 }

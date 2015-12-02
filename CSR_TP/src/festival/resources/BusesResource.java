@@ -59,4 +59,26 @@ public class BusesResource extends ServerResource {
 		JsonRepresentation result = new JsonRepresentation(jsonArray);
 		return result;
 	}
+	
+	
+	public Representation createBus(int nbBuses, int nbPlaces) throws Exception {
+
+		Collection<JSONObject> newBuses = new ArrayList<JSONObject>();
+		
+		for (int i = 0; i < nbBuses; i++) {
+			JSONObject busObject = new JSONObject();
+			
+			// Save the bus
+			Bus bus = backend_.getDatabase().createBus(nbPlaces);
+			busObject.put("id", bus.getIdBus());
+			busObject.put("nbPlaces", bus.getPlacesMaxi());
+			
+			newBuses.add(busObject);
+		}
+		
+		// generate result
+		JSONArray jsonArray = new JSONArray(newBuses);
+		JsonRepresentation result = new JsonRepresentation(jsonArray);
+		return result;
+	}
 }
