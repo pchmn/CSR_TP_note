@@ -1,14 +1,16 @@
 package festival.internals;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class SiteDepart {
 
 	public List<Bus> buses;
 
 	public SiteDepart() {
-		buses = new ArrayList<Bus>();
+		buses = new CopyOnWriteArrayList<Bus>();
 	}
 
 	/**
@@ -17,8 +19,10 @@ public class SiteDepart {
 	 */
 	public synchronized void monterBus(Festivalier f){
 		
-		// Tant qu'aucun bus ne lui est attribué
+		// Tant qu'aucun bus ne lui est attribuï¿½
 		while(true) {
+			// TODO Concurrent ModificationException
+			// Parcours les diffï¿½rents bus
 			for (Bus unBus : buses) {
 
 				// Vérifie leurs disponibilités
