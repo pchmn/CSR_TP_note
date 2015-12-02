@@ -50,16 +50,19 @@ public final class Main
        
         
         // Run a simulation
-//        Simulation simulation = new Simulation();
+        int nbFestivaliers = 10;
+        int nbBus = 2;
+        int nbPlacesBus = 3;
+        
 //        int i = 0;
-//        while(i <= 10){
+//        while(i <= nbFestivaliers){
 //            backend.getDatabase().createPeople();
 //        	i++;
 //        }
 //        
 //        int j = 0;
-//        while(j <= 2){
-//            backend.getDatabase().createBus(2);
+//        while(j <= nbBus){
+//            backend.getDatabase().createBus(nbPlacesBus);
 //        	j++;
 //        }
     }
