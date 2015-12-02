@@ -111,7 +111,7 @@ public class Festivalier extends Thread {
 			
 			this.siteDepart.monterBus(this);
 			this.status.put('C', System.currentTimeMillis());
-			System.out.println("STATE C - Le festivalier " + this.numFestivalier + " monte dans le bus n°" + this.monBus.getId() + " (" + this.monBus.getPlacesDispo() + " / " + this.monBus.getPlacesMaxi() + ").");
+			System.out.println("STATE C - Le festivalier " + this.numFestivalier + " monte dans le bus n°" + this.monBus.getIdBus() + " (" + this.monBus.getPlacesDispo() + " / " + this.monBus.getPlacesMaxi() + ").");
 		}
 	}
 	
