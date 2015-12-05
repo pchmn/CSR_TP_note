@@ -61,6 +61,13 @@ public class BusesResource extends ServerResource {
 	}
 	
 	
+	/**
+	 * Créer des buses pour la simulation, ils sont ajouté à la database
+	 * @param nbBuses
+	 * @param nbPlaces
+	 * @return
+	 * @throws Exception
+	 */
 	public Representation createBus(int nbBuses, int nbPlaces) throws Exception {
 
 		Collection<JSONObject> newBuses = new ArrayList<JSONObject>();

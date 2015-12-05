@@ -106,7 +106,7 @@ public class Festivalier extends Thread {
 	 */
 	public void prendreBus(){
 		
-		// On vÃ©rifie qu'il possÃ¨de bien un ticket
+		// On vérifie qu'il possède bien un ticket
 		if (this.status.containsKey('B')) {
 			
 			this.siteDepart.monterBus(this);

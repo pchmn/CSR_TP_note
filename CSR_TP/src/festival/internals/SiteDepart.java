@@ -17,10 +17,10 @@ public class SiteDepart {
 	 */
 	public synchronized void monterBus(Festivalier f){
 		
-		// Tant qu'aucun bus ne lui est attribuï¿½
+		// Tant qu'aucun bus ne lui est attribue
 		while(true) {
 			// TODO Concurrent ModificationException
-			// Parcours les diffï¿½rents bus
+			// Parcours les differents bus
 			for (Bus unBus : buses) {
 
 				// Vérifie leurs disponibilités

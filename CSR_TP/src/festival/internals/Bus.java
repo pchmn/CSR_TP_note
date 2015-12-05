@@ -178,6 +178,7 @@ public class Bus extends Thread{
 
 	public void run(){
 
+		// Les bus tourne en permanence
 		while(true){
 			
 			System.out.println("Le bus : " + this.getIdBus() + " est disponible !");			

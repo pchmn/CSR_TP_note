@@ -21,16 +21,16 @@ import festival.internals.SiteDepart;
 public class InMemoryDatabase implements Database
 {
     
-    /** User count (next id to give).*/
+    /** Festivalier count (next id to give).*/
     private int festivalierCount_;
 
-    /** User Hashmap. */
+    /** Festivalier Hashmap. */
     Map<Integer, Festivalier> festivaliers_;
     
-    /** User count (next id to give).*/
+    /** Bus count (next id to give).*/
     private int busCount_;
 
-    /** User Hashmap. */
+    /** Bus Hashmap. */
     Map<Integer, Bus> buses_;
 
     private Billeterie billeterie;
@@ -41,13 +41,14 @@ public class InMemoryDatabase implements Database
     	siteDepart = new SiteDepart();
         festivaliers_ = new HashMap<Integer, Festivalier>();
         buses_ = new HashMap<Integer, Bus>();
-        
     }
 
 
+    /**
+     * Créer un nouveau festivalier, le rajoute a database et démarre le thread
+     */
     @Override
-    public synchronized Festivalier createPeople() throws InterruptedException
-    {
+    public synchronized Festivalier createPeople() throws InterruptedException{
     	Festivalier festivalier = new Festivalier(billeterie, siteDepart);
         festivalier.setNumFestivalier(festivalierCount_);
         festivaliers_.put(festivalierCount_, festivalier);
@@ -67,6 +68,9 @@ public class InMemoryDatabase implements Database
 	}
 
 
+	/**
+	 * Créer un bus, le rajoute a database et lance le thread
+	 */
 	@Override
 	public synchronized Bus createBus(int nbPlaces) throws InterruptedException{
 		Bus bus = new Bus(nbPlaces);

@@ -96,9 +96,7 @@ public class FestivaliersResource extends ServerResource{
 	 * @return JSON representation of the newly created user
 	 * @throws JSONException
 	 */
-	public Representation createPeople(int nbNewFestivalier)
-			throws Exception
-	{
+	public Representation createPeople(int nbNewFestivalier) throws Exception {
 
 		Collection<JSONObject> newFestivaliers = new ArrayList<JSONObject>();
 		

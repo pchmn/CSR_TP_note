@@ -32,6 +32,7 @@ public class Billeterie {
 	 */
 	public synchronized void vendre() {
 
+		// Met les threads festivalier en attente si il ne reste plus de places
 		while(this.currentStock == 0){
 			try {
 				wait();
