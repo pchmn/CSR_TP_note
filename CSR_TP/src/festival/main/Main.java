@@ -7,7 +7,6 @@ import org.restlet.data.Protocol;
 
 import festival.application.MyFestivalApplication;
 import festival.backend.Backend;
-import festival.simulation.Simulation;
 
 /**
  * Main RESTlet minimal example
@@ -54,17 +53,17 @@ public final class Main
         int nbBus = 2;
         int nbPlacesBus = 3;
         
-//        int i = 0;
-//        while(i <= nbFestivaliers){
-//            backend.getDatabase().createPeople();
-//        	i++;
-//        }
-//        
-//        int j = 0;
-//        while(j <= nbBus){
-//            backend.getDatabase().createBus(nbPlacesBus);
-//        	j++;
-//        }
+        int i = 0;
+        while(i <= nbFestivaliers){
+            backend.getDatabase().createPeople();
+        	i++;
+        }
+        
+        int j = 0;
+        while(j <= nbBus){
+            backend.getDatabase().createBus(nbPlacesBus);
+        	j++;
+        }
     }
 
 }

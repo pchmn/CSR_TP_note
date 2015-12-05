@@ -7,8 +7,6 @@ import festival.internals.Billeterie;
 import festival.internals.Bus;
 import festival.internals.Festivalier;
 import festival.internals.SiteDepart;
-import festival.resources.BusesResource;
-import festival.resources.FestivaliersResource;
 
 public class Simulation {
 
